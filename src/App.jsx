@@ -77,31 +77,31 @@ function App() {
             <div className="inputWrapper">
               <div className="inputDetail">
                 <input type="text" disabled value={password} />
-                <button
-                  className="passPower"
-                  style={{ backgroundColor: passColor }}
-                >
-                  {passStrength}
-                </button>
-                <button
-                  className="refreshBtn"
-                  onClick={(e) => {
-                    let target = e.target.classList;
-                    if (!target.contains("refreshBtnClicked")) {
-                      randomPasswordGenerator();
-                      target.add("refreshBtnClicked");
-                      setTimeout(() => {
-                        e.target.classList.remove("refreshBtnClicked");
-                      }, 800);
-                    }
-                  }}
-                >
-                  <FontAwesomeIcon
-                    icon={faRotateLeft}
-                    size="lg"
-                    style={{ color: "#414141" }}
-                  />
-                </button>
+                <div>
+                  <button
+                    className="passPower"
+                    style={{ backgroundColor: passColor }}
+                  >
+                    {passStrength}
+                  </button>
+                  <button className="refreshBtn">
+                    <FontAwesomeIcon
+                      icon={faRotateLeft}
+                      size="lg"
+                      style={{ color: "#414141" }}
+                      onClick={(e) => {
+                        let target = e.target.classList;
+                        if (!target.contains("refreshBtnClicked")) {
+                          randomPasswordGenerator();
+                          target.add("refreshBtnClicked");
+                          setTimeout(() => {
+                            e.target.classList.remove("refreshBtnClicked");
+                          }, 500);
+                        }
+                      }}
+                    />
+                  </button>
+                </div>
               </div>
               <button className="cpyBtn" onClick={copyToClipboard}>
                 {copyText}
