@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
+
+:root {
+  --brandBgColor: #FFF9F5;
+  --brandBtnColor: #0070F6;
+  --brandTextColor: #F7FDFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.outerContainer {
+  min-width: 100%;
+  min-height: 100vh;
+  background-color: #FFF9F5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.headingDetail h1 {
+  font-size: 50px;
+  font-weight: 900;
+  margin: 85px 0 50px;
+  letter-spacing: 1px;
+}
+
+.headingDetail p {
+  font-size: 20px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.contentDetail {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.passImage {
+  margin-left: 60px;
+  flex: 1;
+}
+
+.passDetail {
+  flex: 2;
+  padding: 5%;
+}
+
+.inputWrapper {
+  display: flex;
+  gap: 15px;
+}
+
+.cpyBtn {
+  padding: 10px 35px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--brandTextColor);
+  background-color: var(--brandBtnColor);
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.cpyBtn:hover {
+  padding: 13px 40px;
+  background-color: #002df6;
+}
+
+.inputDetail {
+  min-width: 500px;
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  border-radius: 20px;
+  padding: 7px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  background-color: #FFFFFF;
+  overflow: hidden;
+}
+
+.inputDetail input {
+  font-size: 18px;
+  outline: none;
+  border: none;
+  padding: 10px;
+  min-width: 55%;
+  background: transparent;
+}
+
+.inputDetail .passPower {
+  font-size: 14px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--brandBtnColor);
+  color: var(--brandTextColor);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.refreshBtn {
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  scale: 1.2;
+  overflow: hidden;
+}
+
+.refreshBtnClicked {
+  animation: refreshAni 0.6s;
+}
+
+@keyframes refreshAni {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.passLengthWrapper {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.passLengthWrapper>p {
+  font-size: 22px;
+  flex: 1;
+}
+
+.passLengthVal {
+  color: #414141;
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+.passLengthWrapper .rangeWrapper {
+  flex: 2.1;
+}
+
+.rangeWrapper button {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.616);
+  font-size: 30px;
+  color: gray;
+  margin-inline: 15px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.rangeWrapper button:active {
+  scale: 0.95;
+}
+
+.rangeWrapper input[type=range] {
+  width: 250px;
+  background-color: green;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  padding: 10px;
+}
+
+.charsUsed {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  gap: 100px;
+}
+
+.charsUsed .charInputWrap {
+  display: flex;
+  gap: 50px;
+}
+
+.charInputWrap>div {
+  display: flex;
+  align-items: center;
+}
+
+.charInputWrap input {
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+}
+
+.charInputWrap label {
+  color: #414141;
+  font-weight: 700;
+}
