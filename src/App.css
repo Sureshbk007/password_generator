@@ -80,7 +80,7 @@
 }
 
 .cpyBtn:hover {
-  padding: 13px 40px;
+  padding-inline: 40px;
   background-color: #002df6;
 }
 
@@ -109,7 +109,6 @@
 
 .inputDetail>div {
   display: flex;
-  /* padding: 0 10px; */
   gap: 15px;
 }
 
@@ -170,7 +169,7 @@
 .passLengthWrapper .rangeWrapper {
   display: flex;
   flex: 2.1;
-  min-width: 350px;
+  min-width: 320px;
 }
 
 .rangeWrapper button {
@@ -235,6 +234,7 @@ input[type=range]::-webkit-slider-thumb {
   }
 
   .headingDetail h1 {
+    margin: 10px;
     font-size: 30px;
   }
 
@@ -244,6 +244,7 @@ input[type=range]::-webkit-slider-thumb {
 
   .passDetail {
     padding: 15px;
+    margin-bottom: 20px;
   }
 
   .inputDetail {
