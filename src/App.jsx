@@ -72,7 +72,7 @@ function App() {
     length < 50 && setLength(length + 1);
   }
   function handleLengthDecrease() {
-    length > 0 && setLength(length - 1);
+    length > 1 && setLength(length - 1);
   }
 
   function countSelectedCheckboxes() {
