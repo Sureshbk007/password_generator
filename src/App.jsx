@@ -6,12 +6,24 @@ import "./App.css";
 function App() {
   const [password, setPassword] = useState("");
   const [length, setLength] = useState(15);
-  const [capLetters, setcapLetters] = useState(false);
-  const [nums, setNums] = useState(false);
+  const [capLetters, setcapLetters] = useState(true);
+  const [smallLetters, setSmallLetters] = useState(true);
+  const [nums, setNums] = useState(true);
   const [specialChars, setspecialChars] = useState(false);
   const [passStrength, setPassStrength] = useState("very strong");
   const [passColor, setPassColor] = useState("");
   const [copyText, setCopyText] = useState("Copy");
+  const [animationInProgress, setAnimationInProgress] = useState(false);
+
+  function handleRefreshClick() {
+    if (!animationInProgress) {
+      setAnimationInProgress(true);
+      randomPasswordGenerator();
+      setTimeout(() => {
+        setAnimationInProgress(false);
+      }, 450);
+    }
+  }
 
   function findStrength() {
     if (length >= 12) {
@@ -38,8 +50,9 @@ function App() {
   }
   const randomPasswordGenerator = useCallback(() => {
     let pass = "";
-    let str = "abcdefghijklmnopqrstuvwxyz";
+    let str = "";
     if (capLetters) str += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    if (smallLetters) str += "abcdefghijklmnopqrstuvwxyz";
     if (nums) str += "0123456789";
     if (specialChars) str += `#$@&%!?;:,.{}[]|*`;
     for (let i = 1; i <= length; i++) {
@@ -59,6 +72,15 @@ function App() {
   }
   function handleLengthDecrease() {
     length > 0 && setLength(length - 1);
+  }
+
+  function countSelectedCheckboxes() {
+    let count = 0;
+    if (capLetters) count++;
+    if (smallLetters) count++;
+    if (nums) count++;
+    if (specialChars) count++;
+    return count;
   }
   return (
     <>
@@ -88,17 +110,16 @@ function App() {
                     <FontAwesomeIcon
                       icon={faRotateLeft}
                       size="lg"
-                      style={{ color: "#414141" }}
-                      onClick={(e) => {
-                        let target = e.target.classList;
-                        if (!target.contains("refreshBtnClicked")) {
-                          randomPasswordGenerator();
-                          target.add("refreshBtnClicked");
-                          setTimeout(() => {
-                            e.target.classList.remove("refreshBtnClicked");
-                          }, 500);
-                        }
+                      style={{
+                        color: "#414141",
+                        transition: animationInProgress
+                          ? "transform 0.45s ease"
+                          : "none",
+                        transform: animationInProgress
+                          ? "rotate(-360deg)"
+                          : "none",
                       }}
+                      onClick={handleRefreshClick}
                     />
                   </button>
                 </div>
@@ -136,15 +157,29 @@ function App() {
                   <input
                     type="checkbox"
                     id="ABC"
+                    checked={capLetters}
                     onChange={() => setcapLetters((prev) => !prev)}
+                    disabled={countSelectedCheckboxes() === 1 && capLetters}
                   />
                   <label htmlFor="ABC">ABC</label>
                 </div>
                 <div>
                   <input
                     type="checkbox"
+                    id="abc"
+                    checked={smallLetters}
+                    onChange={() => setSmallLetters((prev) => !prev)}
+                    disabled={countSelectedCheckboxes() === 1 && smallLetters}
+                  />
+                  <label htmlFor="abc">abc</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
                     id="123"
+                    checked={nums}
                     onChange={() => setNums((prev) => !prev)}
+                    disabled={countSelectedCheckboxes() === 1 && nums}
                   />
                   <label htmlFor="123">123</label>
                 </div>
@@ -152,7 +187,9 @@ function App() {
                   <input
                     type="checkbox"
                     id="specialChar"
+                    checked={specialChars}
                     onChange={() => setspecialChars((prev) => !prev)}
+                    disabled={countSelectedCheckboxes() === 1 && specialChars}
                   />
                   <label htmlFor="specialChar">#$&</label>
                 </div>
