@@ -112,7 +112,7 @@
   gap: 15px;
 }
 
-.inputDetail .passPower {
+.inputDetail .passwordStrengthIndicator {
   font-size: 14px;
   padding: 8px 15px;
   border: none;
@@ -241,7 +241,7 @@ input[type=range]::-webkit-slider-thumb {
     font-size: 14px;
   }
 
-  .inputDetail .passPower {
+  .inputDetail .passwordStrengthIndicator {
     font-size: 12px;
   }
 

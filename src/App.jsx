@@ -15,7 +15,7 @@ function App() {
   const [copyText, setCopyText] = useState("Copy");
   const [animationInProgress, setAnimationInProgress] = useState(false);
 
-  function handleRefreshClick() {
+  const handleRefreshClick = useCallback(() => {
     if (!animationInProgress) {
       setAnimationInProgress(true);
       randomPasswordGenerator();
@@ -23,7 +23,7 @@ function App() {
         setAnimationInProgress(false);
       }, 450);
     }
-  }
+  }, [animationInProgress]);
 
   function findStrength() {
     if (length >= 12) {
@@ -61,7 +61,7 @@ function App() {
     }
     setPassword(pass);
     findStrength();
-    if (copyText == "copied") setCopyText("copy");
+    if (copyText === "copied") setCopyText("copy");
   });
 
   useEffect(() => {
@@ -94,7 +94,7 @@ function App() {
         </div>
         <div className="contentDetail">
           <div className="passImage">
-            <img src={fortImg} />
+            <img src={fortImg} alt="Fort image" />
           </div>
           <div className="passDetail">
             <div className="inputWrapper">
@@ -102,7 +102,7 @@ function App() {
                 <input type="text" disabled value={password} />
                 <div>
                   <button
-                    className="passPower"
+                    className="passwordStrengthIndicator"
                     style={{ backgroundColor: passColor }}
                   >
                     {passStrength}
@@ -142,9 +142,7 @@ function App() {
                   min="1"
                   max="50"
                   value={length}
-                  onChange={(e) => {
-                    setLength(Number(e.target.value));
-                  }}
+                  onChange={(e) => setLength(Number(e.target.value))}
                 />
                 <button className="moreBtn" onClick={handleLengthIncrease}>
                   +
