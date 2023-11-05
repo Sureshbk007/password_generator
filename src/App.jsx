@@ -15,7 +15,7 @@ function App() {
   const [copyText, setCopyText] = useState("Copy");
   const [animationInProgress, setAnimationInProgress] = useState(false);
 
-  const handleRefreshClick = useCallback(() => {
+  function handleRefreshClick() {
     if (!animationInProgress) {
       setAnimationInProgress(true);
       randomPasswordGenerator();
@@ -23,7 +23,7 @@ function App() {
         setAnimationInProgress(false);
       }, 450);
     }
-  }, [animationInProgress]);
+  }
 
   const findStrength = useCallback(() => {
     if (length >= 12) {
