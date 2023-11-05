@@ -25,7 +25,7 @@ function App() {
     }
   }, [animationInProgress]);
 
-  function findStrength() {
+  const findStrength = useCallback(() => {
     if (length >= 12) {
       setPassStrength("very Strong");
       setPassColor("#0070F6");
@@ -42,7 +42,7 @@ function App() {
       setPassStrength("very weak");
       setPassColor("#F5203E");
     }
-  }
+  }, [length]);
 
   function copyToClipboard() {
     window.navigator.clipboard.writeText(password);
