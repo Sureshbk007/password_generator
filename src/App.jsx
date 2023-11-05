@@ -6,7 +6,7 @@ import "./App.css";
 function App() {
   const [password, setPassword] = useState("");
   const [length, setLength] = useState(15);
-  const [capLetters, setcapLetters] = useState(true);
+  const [capLetters, setCapLetters] = useState(true);
   const [smallLetters, setSmallLetters] = useState(true);
   const [nums, setNums] = useState(true);
   const [specialChars, setspecialChars] = useState(false);
@@ -63,9 +63,10 @@ function App() {
     findStrength();
     if (copyText == "copied") setCopyText("copy");
   });
+
   useEffect(() => {
     randomPasswordGenerator();
-  }, [length, capLetters, nums, specialChars]);
+  }, [length, capLetters, nums, specialChars, smallLetters]);
 
   function handleLengthIncrease() {
     length < 50 && setLength(length + 1);
@@ -158,7 +159,7 @@ function App() {
                     type="checkbox"
                     id="ABC"
                     checked={capLetters}
-                    onChange={() => setcapLetters((prev) => !prev)}
+                    onChange={() => setCapLetters((prev) => !prev)}
                     disabled={countSelectedCheckboxes() === 1 && capLetters}
                   />
                   <label htmlFor="ABC">ABC</label>
